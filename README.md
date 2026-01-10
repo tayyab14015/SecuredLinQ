@@ -1,16 +1,141 @@
-SecuredLinQ – Secure Video Communication and Load Management System Build on Go And React
-SecuredLinQ is a web-based logistics platform that integrates secure real-time video communication with a structured load management system, with a focus on backend development using Go (Golang). The project demonstrates the use of Go for building a secure, maintainable, and well-structured server-side application for real-world logistics operations.
-The backend is implemented in Go using the Gin web framework and follows Clean Architecture principles, separating request handling, business logic, and data access layers. RESTful APIs are designed and implemented in Go to support authentication, load management, meeting control, and media handling. Database interactions are managed using GORM with a MySQL database to ensure reliable data persistence and integrity.
-Authentication and authorization are handled through secure, cookie-based session management, enforced via Go middleware for role-based access control. The backend is responsible for generating secure video access tokens, managing meeting rooms, controlling cloud recording sessions, and maintaining audit records. Media assets such as video recordings and screenshots are managed by the Go backend and securely stored in AWS S3, with controlled access through signed URLs.
-The frontend, developed in React and TypeScript, communicates with the Go backend through REST APIs, while all core business logic, validation, and security enforcement are handled on the server side in Go.
-Key Go-Focused Learning Outcomes:
+SecuredLinQ
+Secure Video Communication and Load Management System
+Built with Go (Golang) and React
+________________________________________
+Overview
+SecuredLinQ is a web-based logistics and communication platform that combines secure real-time video communication with a structured load management system. The system is designed for scenarios where administrators need to remotely coordinate with drivers, verify operations via live video calls, and manage logistics workflows in a controlled and auditable manner.
+The project emphasizes backend-centric system design using Go, following Clean Architecture principles, while the frontend provides a modern, responsive user interface built with React and TypeScript.________________________________________System Architecture
+SecuredLinQ follows a client–server architecture:
+•	Backend: Go-based REST API responsible for all business logic, security, persistence, and third-party integrations
+•	Frontend: React SPA that consumes backend APIs and provides role-based user interfaces
+•	Database: MySQL
+•	Storage: AWS S3 for media assets
+•	Video Communication: Agora RTC with cloud recording
+All authentication, authorization, validation, and security enforcement are handled on the backend.
+________________________________________
+Technology Stack
+Backend
+•	Go (Golang) 1.21+
+•	Gin Web Framework
+•	GORM (MySQL ORM)
+•	Cookie-based session authentication
+•	AWS S3 (media storage)
+•	Agora SDK (video calls & recording)
+•	SMTP (email notifications)
+Frontend
+•	React 18
+•	TypeScript
+•	Vite
+•	React Router
+•	Tailwind CSS
+•	Axios
+•	Agora RTC Web SDK
+________________________________________
+Key Features
+Authentication & Security
+•	Cookie-based session authentication
+•	Role-based access control (Admin / Driver)
+•	Secure middleware enforcement
+•	HttpOnly, Secure, SameSite cookies
+Load Management
+•	Admin creates and manages loads
+•	Assign loads to drivers
+•	Track load status (assigned, in progress, completed)
+•	Driver-side status updates
+Video Communication
+•	Secure real-time video/audio calls using Agora
+•	Backend-generated RTC tokens
+•	Cloud recording controlled by admin
+•	Screenshot capture during calls (admin only)
+Media & Storage
+•	Video recordings and screenshots stored in AWS S3
+•	Secure access via backend-controlled URLs
+•	Media linked to load and meeting records
+Notifications
+•	Automated email notifications with meeting links for Drivers
+________________________________________
+Repository Structure
+SecuredLinQ/
+├── backend/        # Go backend service
+│   ├── cmd/
+│   ├── internal/
+│   ├── pkg/
+│   ├── go.mod
+│   
+│
+├── frontend/       # React frontend application
+│   ├── src/
+│   ├── index.html
+│   ├── vite.config.ts
+│   
+│
+└── README.md       # (This file)
+________________________________________
+Backend Overview (Go)
+The backend is implemented using Clean Architecture, ensuring separation of concerns and long-term maintainability.
+Backend Layers
+•	Handlers – HTTP request handling
+•	Services – Business logic
+•	Repositories – Database access
+•	Models – GORM entities
+•	Middleware – Authentication & authorization
+Core Backend Responsibilities
+•	Session management and role validation
+•	Load lifecycle management
+•	Agora token generation and recording control
+•	Media handling and S3 integration
+•	Email notifications
+•	Audit-friendly API design
+________________________________________
+Frontend Overview (React)
+The frontend is a Single Page Application (SPA) that communicates with the backend via REST APIs.
+Frontend Capabilities
+•	Admin dashboard for load and driver management
+•	Driver interface for assigned loads
+•	Integrated video call UI
+•	Screenshot capture and recording controls
+•	Responsive UI with Tailwind CSS
+Authentication Flow
+1.	User logs in (admin or driver)
+2.	Backend sets secure session cookie
+3.	Frontend automatically includes cookie in requests
+4.	Protected routes validate session via backend
+________________________________________
+Getting Started
+Prerequisites
+•	Go 1.21+
+•	Node.js 18+
+•	MySQL
+•	AWS S3 bucket
+•	Agora account
+•	SMTP email service
+________________________________________
+Setup Instructions
+1. Backend Setup
+cd backend
+cp env.example.txt .env
+# Update environment variables
+go run cmd/api/main.go
+2. Frontend Setup
+cd frontend
+npm install
+npm run dev
+Frontend runs at:
+http://localhost:5173
+Backend runs at:
+http://localhost:8080 (default)
+________________________________________
+API Communication
+•	Frontend communicates with backend via REST APIs
+•	Cookies handle session persistence
+•	All sensitive operations are validated server-side
+•	Video tokens and media access are generated by backend only
+________________________________________
+Key Learning Outcomes (Go-Focused)
 •	RESTful API development using Gin
-•	Clean Architecture design in Go
-•	Secure session management and middleware implementation
-•	Database modeling and ORM usage with GORM
-•	Integration of third-party services using Go SDKs
-•	Building scalable backend services with Go
-This project highlights Go’s effectiveness for developing structured, secure, and production-ready backend systems and applies it to a practical logistics and real-time communication use case.
+•	Clean Architecture implementation in Go
+•	Secure session and middleware design
+•	Database modeling with GORM
+•	Third-party SDK integration (Agora, AWS)
+•	Scalable backend service design
 
-
-NOTE: Both frontend and backend repositories have their own readme files which you can use to setup this project
