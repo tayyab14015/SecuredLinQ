@@ -117,7 +117,7 @@ Setup Instructions
 cd backend
 npm i
 cp env.example.txt .env
-# Update environment variables
+Update environment variables
 go run cmd/api/main.go
 2. Frontend Setup
 cd frontend
