@@ -4,7 +4,9 @@ Built with Go (Golang) and React
 
 Overview
 SecuredLinQ is a web-based logistics and communication platform that combines secure real-time video communication with a structured load management system. The system is designed for scenarios where administrators need to remotely coordinate with drivers, verify operations via live video calls, and manage logistics workflows in a controlled and auditable manner.
-The project emphasizes backend-centric system design using Go, following Clean Architecture principles, while the frontend provides a modern, responsive user interface built with React and TypeScript.________________________________________System Architecture
+The project emphasizes backend-centric system design using Go, following Clean Architecture principles, while the frontend provides a modern, responsive user interface built with React and TypeScript.
+
+System Architecture
 SecuredLinQ follows a client–server architecture:
 •	Backend: Go-based REST API responsible for all business logic, security, persistence, and third-party integrations
 •	Frontend: React SPA that consumes backend APIs and provides role-based user interfaces
